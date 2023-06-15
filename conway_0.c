@@ -17,7 +17,7 @@
 #define ROUNDS 1
 
 void findNachbarn(char x, char y, int spielfeld[][YMAX], char nachbarn[][BOXSIZE]);
-void initSpielfeld(int spielfeld[][YMAX]);
+//void initSpielfeld(int spielfeld[][YMAX]);
 void printSpielfeld(int spielfeld[][YMAX]);
 char zaehlLebende(char nachbarn[][BOXSIZE]);
 void pruefeRegeln(char x, char y, char lebende, int temp[][YMAX], int spielfeld[][YMAX]);
@@ -258,12 +258,3 @@ void printSpielfeld(int spielfeld[][YMAX]) {
 
 
 
-void initSpielfeld(int spielfeld[][YMAX]) {
-	char x, y;
-	//fülle das feld mit zufallswerten und gibs aus
-	for (y = 0; y < YMAX; y++) {
-		for (x = 0; x < XMAX; x++) {
-			spielfeld[x][y] = array[x][y];
-		}
-	}
-}
