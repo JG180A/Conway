@@ -21,7 +21,7 @@
 #define BOXSIZE 3
 #define ROUNDS 1
 
-void printSpielfeld(int spielfeld[][YMAX]);
+//void printSpielfeld(int spielfeld[][YMAX]);
 
 //static const char array[XMAX][YMAX] 
 static int spielfeld[XMAX][YMAX] = {
@@ -90,7 +90,12 @@ int main(void)
 	clrscr();
 	background = bgcolor(COLOR_BLACK);
 	text = textcolor(COLOR_WHITE);
-	printSpielfeld(spielfeld);
+	for (y = 0; y < YMAX; y++) {
+		for (x = 0; x < XMAX; x++) {
+			revers(spielfeld[x][y]);
+			cputcxy(x, y, 32);
+		}
+	}
 	//	signal (int sig, __sigfunc func);
 
 
@@ -142,7 +147,12 @@ int main(void)
 		memcpy(spielfeld, temp, XMAX * YMAX * 2);
 
 		round++;
-		printSpielfeld(spielfeld);
+		for (y = 0; y < YMAX; y++) {
+			for (x = 0; x < XMAX; x++) {
+				revers(spielfeld[x][y]);
+				cputcxy(x, y, 32);
+			}
+		}
 	}
 	t = clock() - t;
 
@@ -177,15 +187,7 @@ int main(void)
 
 
 
-void printSpielfeld(int spielfeld[][YMAX]) {
-	char x, y;
-	for (y = 0; y < YMAX; y++) {
-		for (x = 0; x < XMAX; x++) {
-			revers(spielfeld[x][y]);
-			cputcxy(x, y, 32);
-		}
-	}
-}
+
 
 
 
