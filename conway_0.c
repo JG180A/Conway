@@ -147,31 +147,22 @@ void pruefeRegeln(char x, char y, char lebende, int temp[][YMAX], int spielfeld[
 			//			printf("t3\n\n");
 		}
 	}
-	if (spielfeld[x][y] == 1) {
-		if (lebende == 2) {
+	else {
+		if (lebende == 2 || lebende == 3) {
 			temp[x][y] = 1;
 			//			printf("=2\n\n");
-		}
-	}
-	if (spielfeld[x][y] == 1) {
-		if (lebende == 3) {
-			temp[x][y] = 1;
 			//			printf("=3\n\n");
 		}
-	}
-	if (spielfeld[x][y] == 1) {
-		if (lebende < 2) {
+
+
+		else {
 			temp[x][y] = 0;
 			//			printf("<2\n\n");
-		}
-	}
-	if (spielfeld[x][y] == 1) {
-		if (lebende > 3) {
-			temp[x][y] = 0;
 			//			printf(">3\n\n");
 		}
 	}
 }
+
 
 
 char zaehlLebende(char nachbarn[][BOXSIZE]) {
