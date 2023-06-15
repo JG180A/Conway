@@ -1,8 +1,13 @@
+
+//Compiler optimierung = -Oirs
+
+
 #include <c64.h>
 #include <conio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+
 
 #define P_SCREEN0 ((unsigned char *)0x2000)
 #define P_COLOR0  ((unsigned char *)0x0400)
@@ -20,7 +25,7 @@ void findNachbarn(char x, char y, int spielfeld[][YMAX], char nachbarn[][BOXSIZE
 //void initSpielfeld(int spielfeld[][YMAX]);
 void printSpielfeld(int spielfeld[][YMAX]);
 char zaehlLebende(char nachbarn[][BOXSIZE]);
-void pruefeRegeln(char x, char y, char lebende, int temp[][YMAX], int spielfeld[][YMAX]);
+//void pruefeRegeln(char x, char y, char lebende, int temp[][YMAX], int spielfeld[][YMAX]);
 
 //static const char array[XMAX][YMAX] 
 static int spielfeld[XMAX][YMAX] = {
@@ -100,7 +105,18 @@ int main(void)
 				findNachbarn(x, y, spielfeld, nachbarn);
 				lebende = zaehlLebende(nachbarn);
 
-				pruefeRegeln(x, y, lebende, temp, spielfeld);
+				switch (lebende)
+				{
+				case 2:
+					temp[x][y] = spielfeld[x][y];
+					break;
+				case 3:
+					temp[x][y] = 1;
+					break;
+				default:
+					temp[x][y] = 0;
+					break;
+				}
 			}// for x
 		}// for y
 
@@ -139,29 +155,7 @@ int main(void)
 
 
 
-void pruefeRegeln(char x, char y, char lebende, int temp[][YMAX], int spielfeld[][YMAX]) {
-	//hier kommen meine regeln
-	if (spielfeld[x][y] == 0) {
-		if (lebende == 3) {
-			temp[x][y] = 1;
-			//			printf("t3\n\n");
-		}
-	}
-	else {
-		if (lebende == 2 || lebende == 3) {
-			temp[x][y] = 1;
-			//			printf("=2\n\n");
-			//			printf("=3\n\n");
-		}
 
-
-		else {
-			temp[x][y] = 0;
-			//			printf("<2\n\n");
-			//			printf(">3\n\n");
-		}
-	}
-}
 
 
 
