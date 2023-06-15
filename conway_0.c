@@ -236,12 +236,7 @@ void printSpielfeld(int spielfeld[][YMAX]) {
 	char x, y;
 	for (y = 0; y < YMAX; y++) {
 		for (x = 0; x < XMAX; x++) {
-			if (spielfeld[x][y] == 1) {
-				revers(1);
-			}
-			else {
-				revers(0);
-			}
+			revers(spielfeld[x][y]);
 			cputcxy(x, y, 32);
 		}
 	}
