@@ -24,7 +24,7 @@
 //void printSpielfeld(int spielfeld[][YMAX]);
 
 //static const char array[XMAX][YMAX] 
-static int spielfeld[XMAX][YMAX] = {
+static char spielfeld[XMAX][YMAX] = {
 {0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -67,8 +67,8 @@ static int spielfeld[XMAX][YMAX] = {
 {0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0},
 };
 
-static int spielfeld[XMAX][YMAX];
-static int temp[XMAX][YMAX];
+static char spielfeld[XMAX][YMAX];
+static char temp[XMAX][YMAX];
 
 int main(void)
 {
@@ -144,7 +144,7 @@ int main(void)
 			}// for x
 		}// for y
 
-		memcpy(spielfeld, temp, XMAX * YMAX * 2);
+		memcpy(spielfeld, temp, XMAX * YMAX);
 
 		round++;
 		for (y = 0; y < YMAX; y++) {
