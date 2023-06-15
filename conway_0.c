@@ -86,7 +86,6 @@ int main(void)
 	unsigned char round = 0;
 
 	t = clock();
-	initSpielfeld(spielfeld);
 	clrscr();
 	background = bgcolor(COLOR_BLACK);
 	text = textcolor(COLOR_WHITE);
@@ -101,7 +100,7 @@ int main(void)
 				findNachbarn(x, y, spielfeld, nachbarn);
 				lebende = zaehlLebende(nachbarn);
 
-				pruefeRegeln(x, y, lebende / 7, temp, spielfeld);
+				pruefeRegeln(x, y, lebende, temp, spielfeld);
 			}// for x
 		}// for y
 
@@ -182,21 +181,22 @@ char zaehlLebende(char nachbarn[][BOXSIZE]) {
 		for (ix = 0; ix < BOXSIZE; ix++) {
 			//prüfe dass wir nicht auf unserer eigneen position sind
 
-			flag = 3 * 7;
+			flag = 3;
 
 			if (ix != 1) {
-				flag += 1 * 7;
+				flag += 1;
 			}
-			if (iy != 1 * 7) {
+			if (iy != 1) {
 				flag += 2;
 			}
-			if (flag > 3 * 7) {
-				lebende += nachbarn[ix][iy] * 7;
+			if (flag > 3) {
+				lebende += nachbarn[ix][iy];
 			}
 		}//for ix
 	}//for iy	
 	return lebende;
 }
+
 
 
 
